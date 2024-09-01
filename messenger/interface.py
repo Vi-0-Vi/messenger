@@ -1,7 +1,7 @@
 from tkinter import *
 import tempfile, base64   #Для конвертации и зашивания иконки
 
-def interfaceStart():
+def interface_start():
     win = Tk()
     win.title("test Tkinter")
     win.geometry("640x400")
@@ -20,5 +20,8 @@ def interfaceStart():
 
     win.mainloop()
 
+def interface_main():
+    interface_start()
+
 if __name__ == '__main__':
-    interfaceStart()
+    interface_main()

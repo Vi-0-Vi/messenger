@@ -1,3 +1,3 @@
 from interface import *
 
-interfaceStart()
+interface_start()
