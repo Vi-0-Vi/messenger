@@ -1,3 +1,3 @@
 from interface import *
 
-interface_start()
+main_win_interface_start()
