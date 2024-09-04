@@ -1,7 +1,16 @@
 from tkinter import *
+from tkinter import ttk
 import tempfile, base64, zlib   #Для конвертации и зашивания иконки
 
+clicks = 0
+
 def main_win_interface_start():
+    def click_button():
+        global clicks
+        clicks += 1
+        # изменяем текст на кнопке
+        label["text"] = f"Clicks {clicks}"
+
     win = Tk()
     win.title("test Tkinter")
     win.geometry("640x400")
@@ -16,7 +25,10 @@ def main_win_interface_start():
     win.iconphoto(False, icon)
 
     label = Label(text="test messeng")
-    label.pack()
+    label.pack(expand=True, fill=BOTH)
+
+    btn = ttk.Button(text="Button", command=click_button)
+    btn.pack(anchor=SE, padx=5, pady=5)
 
     win.mainloop()
 
