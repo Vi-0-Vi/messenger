@@ -5,12 +5,6 @@ import tempfile, base64, zlib   #Для конвертации и зашиван
 clicks = 0
 
 def main_win_interface_start():
-    def click_button():
-        global clicks
-        clicks += 1
-        # изменяем текст на кнопке
-        label["text"] = f"Clicks {clicks}"
-
     win = Tk()
     win.title("test Tkinter")
     win.geometry("640x400")
@@ -27,8 +21,25 @@ def main_win_interface_start():
     label = Label(text="test messeng")
     label.pack(expand=True, fill=BOTH)
 
+    def click_button():
+        global clicks
+        clicks += 1
+        # изменяем текст на кнопке
+        label["text"] = f"Clicks {clicks}"
+    def entered(event):
+        btn["text"] = "Entered"
+    def left(event):
+        btn["text"] = "Left"
+    def single_click(event):
+        btn["text"] = "Single Click"
+    def double_click(event):
+        btn["text"] = "Double Click"
     btn = ttk.Button(text="Button", command=click_button)
     btn.pack(anchor=SE, padx=5, pady=5)
+    btn.bind("<Enter>", entered)
+    btn.bind("<Leave>", left)
+    btn.bind("<ButtonPress-1>", single_click)
+    btn.bind("<Double-ButtonPress-1>", double_click)
 
     win.mainloop()
 
