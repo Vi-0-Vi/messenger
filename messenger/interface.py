@@ -19,14 +19,16 @@ def main_win_interface_start():
     icon = PhotoImage(file=ICON_PATH)
     win.iconphoto(False, icon)
 
-    label = Label(text="test messeng")
-    label.pack(expand=True, fill=BOTH)
+    label = ttk.Label(text="test messeng", font=("Arial", 14))
+    label.config(image=icon, compound="top")                    # Добавление изображения
+    label.config(borderwidth=2, relief="groove")                # Настройка рамки
+    label.config(background="#FFCDD2", foreground="#B71C1C")    # Настройка цветов
+    label.pack(expand=True)
 
     def click_button():
         global clicks
         clicks += 1
-        # изменяем текст на кнопке
-        label["text"] = f"Clicks {clicks}"
+        label["text"] = f"Clicks {clicks} - {entry.get()}"
     def entered(event):
         btn["text"] = "Entered"
     def left(event):
@@ -41,6 +43,10 @@ def main_win_interface_start():
     btn.bind("<Leave>", left)
     btn.bind("<ButtonPress-1>", single_click)
     btn.bind("<Double-ButtonPress-1>", double_click)
+
+    entry = ttk.Entry()
+    entry.insert(0, "Hello World")
+    entry.pack(anchor=SW, padx=5, pady=5)
 
     win.mainloop()
 
